@@ -1,0 +1,27 @@
+{
+  "name": "1flix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mosiur404/1flix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mosiur404/1flix/issues"
+  },
+  "homepage": "https://github.com/Mosiur404/1flix#readme",
+  "dependencies": {
+    "apollo-server": "^2.25.2",
+    "config": "^3.3.6",
+    "graphql": "^15.5.1",
+    "mysql2": "^2.2.5"
+  }
+}
