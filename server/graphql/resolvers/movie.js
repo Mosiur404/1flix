@@ -1,7 +1,7 @@
 const pool = require("../../util/database");
 
 const getMovies = async () => {
-  const [movies, fields] = await pool.query("SELECT * FROM movies LIMIT 10;");
+  const [movies, fields] = await pool.query("SELECT * FROM movies LIMIT 4;");
   return movies;
 };
 

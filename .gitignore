@@ -1,5 +1,6 @@
 #Ignore node modules
 client/node_modules/
+client/public/assets
 client/package-lock.json
 server/node_modules/
 server/package-lock.json
