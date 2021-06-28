@@ -1,0 +1,16 @@
+@import "../../../styles//variables/custom-var.scss";
+.navbar {
+  display: flex;
+  width: 100%;
+  height: $navHeight;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbarBrand {
+  font-size: 1.25rem;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}

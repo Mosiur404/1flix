@@ -1,0 +1,25 @@
+.bannerWrap {
+  height: 100%;
+  backdrop-filter: blur(10px) brightness(40%);
+  background-image: linear-gradient(-180deg, transparent, #000);
+  & > div {
+    height: 100%;
+    & > div {
+      height: 100%;
+      & .movieContentBox,
+      & .movieImageBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+      }
+    }
+  }
+  & .movieTitle {
+    font-size: calc(1.425rem + 2.1vw);
+    color: white;
+    font-weight: normal;
+    letter-spacing: 0.2em;
+    margin-top: 3rem;
+  }
+}

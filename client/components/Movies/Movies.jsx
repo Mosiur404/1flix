@@ -1,21 +1,10 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { movieQuery } from "../../lib/gql/movies";
 import MovieList from "./MovieList";
 
 export default function Movies() {
-  const query = gql`
-    query {
-      movies {
-        ID
-        movie_title
-        attachment {
-          medium
-          file_extension
-        }
-      }
-    }
-  `;
-  const { loading, error, data } = useQuery(query);
+  const { loading, error, data } = useQuery(movieQuery);
   const movies = data ? data.movies : [];
   return (
     <>
@@ -24,3 +13,12 @@ export default function Movies() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const apolloClient = initializeApollo();
+  await apolloClient.query({
+    query: movieQuery,
+    // variables: { code: VARIABLE },
+  });
+  return { props: { initialApolloState: apolloClient.cache.extract() } };
+};

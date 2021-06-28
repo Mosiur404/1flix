@@ -1,13 +1,13 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
+import Button from "../UI/Button/Button";
 import "swiper/swiper-bundle.css";
-import classes from "../styles/Slider.module.scss";
 
 SwiperCore.use([Navigation, Pagination]);
 
-export default function Slider() {
+export default function HeaderSlider() {
   const slides = [
     { title: "Stranger Things", image: `/assets/slides/slide-1.jpg` },
     { title: "Loki", image: `/assets/slides/slide-2.jpg` },
@@ -18,7 +18,7 @@ export default function Slider() {
     <section className="headerSwiperWrap">
       <Swiper
         id="main"
-        className={classes.headerSwiper + " headerSwiper"}
+        className="headerSwiper"
         tag="section"
         wrapperTag="div"
         navigation={{
@@ -37,9 +37,9 @@ export default function Slider() {
       >
         {slides.map((slide, i) => (
           <SwiperSlide key={`slide-${i}`} tag="div">
-            <div className={classes.header_slide}>
+            <div className="headerSlide">
               <Image
-                className={classes.sliderImage}
+                className="sliderImage"
                 src={slide.image}
                 alt={slide.title}
                 layout="fill"
@@ -47,35 +47,33 @@ export default function Slider() {
                 priority
               />
               <div className="overlay">
-                <div className={classes.header_content + " container"}>
-                  <h2 className="mt-5 text-light display-5 fw-normal">
-                    {slide.title.toUpperCase()}
-                  </h2>
-                  <button className="btn btn-light h-flex">
-                    <span className="me-2">WATCH NOW</span>
+                <div className="container headerContent">
+                  <h2 className="sliderTitle">{slide.title.toUpperCase()}</h2>
+                  <Button className="h-flex">
+                    <span>WATCH NOW</span>&nbsp;
                     <Image
                       src="/assets/icons/Video.svg"
                       width="16"
                       height="16"
                     />
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
-        <div className={classes.swiperNav}>
+        <div className="swiperNav">
           <div className="container h-flex">
             <div className="swiperPagination"></div>
             <div className="mb-5 swiperArrow">
-              <div id="prevSlide" className={`${classes.arrowSlide} bg-dark`}>
+              <div id="prevSlide" className="arrowSlide bg-dark">
                 <Image
                   src="/assets/icons/Arrow-Left.svg"
                   width="44"
                   height="44"
                 />
               </div>
-              <div id="nextSlide" className={`${classes.arrowSlide} bg-dark`}>
+              <div id="nextSlide" className="arrowSlide bg-dark">
                 <Image
                   src="/assets/icons/Arrow-Right.svg"
                   width="44"

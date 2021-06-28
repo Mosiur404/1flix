@@ -1,0 +1,10 @@
+@import "../../../styles/variables/custom-var.scss";
+.searchBar {
+  display: none;
+  cursor: pointer;
+}
+@media (max-width: $breakpoint) {
+  .searchBar {
+    display: block;
+  }
+}

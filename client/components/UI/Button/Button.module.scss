@@ -1,0 +1,27 @@
+.btnLight {
+  color: #000;
+  background-color: #fff;
+  border-color: #fff;
+}
+.btnLight:hover {
+  background-color: white;
+  border-color: white;
+}
+.btnLight:focus {
+  background-color: white;
+  border-color: white;
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
+}
+.btnLight:active {
+  background-color: white;
+  border-color: white;
+}
+.btnLight:active:focus {
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
+}
+.btnLight:disabled {
+  background-color: #fff;
+  border-color: #fff;
+}

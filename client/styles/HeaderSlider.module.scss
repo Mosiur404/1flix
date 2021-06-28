@@ -1,0 +1,106 @@
+@import "./variables/custom-var.scss";
+.headerSwiperWrap {
+  padding: 1.5rem 0;
+  & .headerSwiper {
+    width: 100%;
+    height: 20rem;
+    position: relative;
+    & .swiper-slide {
+      width: 70%;
+      height: 100%;
+      & .overlay,
+      & img {
+        border-radius: 1rem;
+      }
+    }
+    & .swiperArrow {
+      display: none;
+      margin-bottom: 3rem;
+    }
+    & .swiperPagination {
+      margin: 1.5rem auto;
+      & .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        opacity: 0.5;
+        margin: 5px;
+        background-color: $light;
+        &.swiper-pagination-bullet-active {
+          background-color: $primary;
+        }
+      }
+    }
+  }
+
+  & .headerContent {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 1;
+  }
+  & .headerSlide {
+    height: 100%;
+    width: 100%;
+    & > div {
+      z-index: -1;
+    }
+    & .sliderTitle {
+      font-size: calc(1.425rem + 2.1vw);
+      color: white;
+      font-weight: normal;
+      letter-spacing: 0.2em;
+      margin-top: 3rem;
+    }
+  }
+  & .swiperNav {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 10;
+    & .arrowSlide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 10rem;
+      padding: 10px;
+      margin: 5px;
+      background-color: black;
+    }
+  }
+  & .overlay {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+// desktop
+@media (min-width: $breakpoint) {
+  .headerSwiperWrap {
+    padding: 0;
+    background-color: #eeeff8;
+    & .headerSwiper {
+      height: $slider-height;
+      & .swiperPagination {
+        margin-left: 0;
+      }
+      & .swiper-slide {
+        width: 100%;
+        & .overlay,
+        img {
+          border-radius: 0;
+        }
+      }
+      .swiperArrow {
+        display: inherit;
+      }
+    }
+  }
+}

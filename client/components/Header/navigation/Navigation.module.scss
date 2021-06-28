@@ -1,0 +1,36 @@
+@import "../../../styles//variables/custom-var.scss";
+
+@media (prefers-reduced-motion: reduce) {
+  .navLink {
+    transition: none;
+  }
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  & .navLink {
+    display: block;
+    color: black;
+    line-height: $navHeight;
+    padding: 0 0.5rem;
+    letter-spacing: 0.061rem;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+    cursor: pointer;
+    & + .navLink {
+      margin-left: 1rem;
+    }
+    &:hover,
+    &:focus {
+      color: #0a58ca;
+    }
+  }
+}
+@media (max-width: $breakpoint) {
+  .nav {
+    display: none;
+  }
+}

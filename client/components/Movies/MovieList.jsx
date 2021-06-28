@@ -3,7 +3,8 @@ import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import MovieSwiper from "./MovieSwiper";
-
+import MovieItem from "./MovieItem";
+import style from "./MovieList.module.scss";
 const useMediaQuery = (width) => {
   const [targetReached, setTargetReached] = useState(false);
 
@@ -34,13 +35,13 @@ export default function MovieList({ title, movies = [], id }) {
   const isBreak = useMediaQuery(992);
   const router = useRouter();
   const nextMoviePage = (ID) => {
-    router.push("/" + ID);
+    router.push("/movie/" + ID);
   };
 
   return (
-    <>
+    <main className="container">
       {isBreak && (
-        <div className="my-3">
+        <div className={style.movieList}>
           <MovieSwiper
             movieLink={nextMoviePage}
             title={title}
@@ -51,32 +52,31 @@ export default function MovieList({ title, movies = [], id }) {
       )}
 
       {!isBreak && (
-        <div className="my-3">
-          <h2 className="primary-text my-3">{title}</h2>
+        <div className={style.movieList}>
+          <div className="h-flex">
+            <h2 className="primary-text my-3">{title}</h2>
+            <div className="primary-text h-flex">
+              More videos{" "}
+              <Image
+                src="/assets/icons/grad-arrow-right.svg"
+                width="16"
+                height="16"
+              />
+            </div>
+          </div>
           <div className="row">
             {movies.map((movie) => (
               <div
                 className="col-6 col-lg-3 movie-item mb-3"
                 key={movie.ID}
-                nextMoviePage={() => nextMoviePage(movie.ID)}
+                onClick={() => nextMoviePage(movie.ID)}
               >
-                <Image
-                  alt={movie.movie_title}
-                  src={`/assets/images/${
-                    movie.attachment.medium +
-                    "." +
-                    movie.attachment.file_extension
-                  }`}
-                  width={300}
-                  height={450}
-                  layout="responsive"
-                />
-                <h3 className="my-1">{movie.movie_title}</h3>
+                <MovieItem movie={movie} />
               </div>
             ))}
           </div>
         </div>
       )}
-    </>
+    </main>
   );
 }
