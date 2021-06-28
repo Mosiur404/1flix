@@ -1,6 +1,7 @@
 @import "./variables/custom-var.scss";
 .headerSwiperWrap {
   padding: 1.5rem 0;
+  background-color: #eeeff8;
   & .headerSwiper {
     width: 100%;
     height: 20rem;
@@ -85,7 +86,7 @@
 @media (min-width: $breakpoint) {
   .headerSwiperWrap {
     padding: 0;
-    background-color: #eeeff8;
+    background-color: white;
     & .headerSwiper {
       height: $slider-height;
       & .swiperPagination {

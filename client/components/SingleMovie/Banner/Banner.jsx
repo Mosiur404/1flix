@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Banner.module.scss";
 import Image from "next/image";
+import Button from "../../UI/Button/Button";
 
 export default function Banner({ movie }) {
   return (
@@ -9,6 +10,10 @@ export default function Banner({ movie }) {
         <div className="row">
           <div className={`col-8 ${style.movieContentBox}`}>
             <h1 className={style.movieTitle}>{movie.movie_title}</h1>
+            <Button className="h-flex">
+              <span>PLAY NOW</span>&nbsp;
+              <Image src="/assets/icons/Video.svg" width="16" height="16" />
+            </Button>
           </div>
           <div className={`col-4 ${style.movieImageBox}`}>
             <Image
