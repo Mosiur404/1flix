@@ -5,5 +5,7 @@
   "password": "root",
   "database": "1flix",
   "charset": "utf8_general_ci",
-  "debug": false
+  "debug": false,
+
+  "privateKey": "12345"
 }

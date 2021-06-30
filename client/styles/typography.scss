@@ -55,7 +55,7 @@ h6,
   letter-spacing: 0.061rem;
 }
 .primary-text {
-  background: linear-gradient(94.71deg, #f9013f 8.85%, #8134af 98.22%);
+  background: $gradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

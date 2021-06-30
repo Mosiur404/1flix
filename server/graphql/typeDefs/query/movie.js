@@ -1,5 +1,4 @@
 const typeDef = `
-  scalar Date
   type Movie {
     ID: ID!
     movie_title: String

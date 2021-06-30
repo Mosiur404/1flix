@@ -1,7 +1,7 @@
 import Header from "../components/Header/Layout/Header";
 import Movies from "../components/Movies/Movies";
 import HeaderSlider from "../components/HeaderSlider/HeaderSlider";
-import Layout from "../components/Footer/Layout";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Header metaTitle="IFLIX" metaDescription="1FLIX STREAMING" />
       <HeaderSlider />
       <Movies />
-      <Layout />
+      <Footer />
     </>
   );
 }

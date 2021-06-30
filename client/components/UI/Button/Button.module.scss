@@ -3,25 +3,29 @@
   background-color: #fff;
   border-color: #fff;
 }
-.btnLight:hover {
-  background-color: white;
-  border-color: white;
-}
+
 .btnLight:focus {
-  background-color: white;
   border-color: white;
   -webkit-box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
   box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
 }
-.btnLight:active {
-  background-color: white;
-  border-color: white;
-}
+
 .btnLight:active:focus {
   -webkit-box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
   box-shadow: 0 0 0 0.25rem rgba(217, 217, 217, 0.5);
 }
-.btnLight:disabled {
+
+//btn primary
+
+.btnPrimary {
+  color: white;
   background-color: #fff;
-  border-color: #fff;
+  background: linear-gradient(135deg, #f9013f 0%, #8134af 100%);
+  border-color: white;
+  &:hover,
+  &:focus,
+  &:active:focus {
+    color: white;
+    border-color: white;
+  }
 }

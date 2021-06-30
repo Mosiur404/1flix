@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import { singleMovieQuery } from "../../lib/gql/movies";
 import SingleMovie from "../../components/SingleMovie/Layout/SingleMovie";
 import Header from "../../components/Header/Layout/Header";
-import Layout from "../../components/Footer/Layout";
+import Footer from "../../components/Footer/Footer";
 
 export default function singleMovie() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function singleMovie() {
     <>
       <Header />
       <SingleMovie movie={movie} />
-      <Layout />
+      <Footer />
     </>
   );
 }
