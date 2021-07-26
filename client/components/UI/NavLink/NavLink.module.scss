@@ -1,0 +1,6 @@
+@import "../../../styles/variables/custom-var.scss";
+.active {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -18,9 +18,7 @@ export default function Banner({ movie }) {
           <div className={`col-4 ${style.movieImageBox}`}>
             <Image
               alt={movie.movie_title}
-              src={`/assets/images/${
-                movie.attachment.medium + "." + movie.attachment.file_extension
-              }`}
+              src={`/assets/images/${movie.attachment.attachment_slug}`}
               width={300}
               height={450}
               layout="responsive"

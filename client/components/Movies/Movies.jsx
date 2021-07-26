@@ -2,9 +2,14 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { movieQuery } from "../../lib/gql/movies";
 import MovieList from "./MovieList";
+import Spinner from "../UI/Loader/Spinner";
+import { initializeApollo } from "../../lib/apollo";
 
-export default function Movies() {
+export default function Movies(props) {
   const { loading, error, data } = useQuery(movieQuery);
+  console.log(props);
+  if (error) return <p className="lead">Error loading</p>;
+  if (loading) return <Spinner />;
   const movies = data ? data.movies : [];
   return (
     <>
@@ -20,5 +25,9 @@ export const getStaticProps = async () => {
     query: movieQuery,
     // variables: { code: VARIABLE },
   });
-  return { props: { initialApolloState: apolloClient.cache.extract() } };
+  console.log(apolloClient.cache.extract());
+  return {
+    props: { initialApolloState: apolloClient.cache.extract() },
+    revalidate: 1,
+  };
 };

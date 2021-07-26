@@ -5,12 +5,34 @@
   height: $navHeight;
   justify-content: space-between;
   align-items: center;
+  & .navbarBrand {
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  & .userName {
+    height: 1.8rem;
+    width: 1.8rem;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.8rem;
+    letter-spacing: 0;
+    color: $dark;
+    background: transparent;
+    border: 1px solid currentColor;
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
 }
-.navbarBrand {
-  font-size: 1.25rem;
-  font-weight: bold;
-  letter-spacing: 0.2em;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
+.userName {
+  display: none;
+}
+@media (max-width: $breakpoint) {
+  .userName {
+    display: flex;
+  }
 }

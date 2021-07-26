@@ -6,17 +6,17 @@ $form-floating-padding-y: 1rem;
 $form-floating-padding-x: 1.5rem;
 
 $primary: #f9013f;
-// $secondary: $gray-600;
+$secondary: #8134af;
 // $success: $green;
 // $info: $cyan;
 // $warning: $yellow;
 // $danger: $red;
 $light: #fff;
 $dark: #2d2d2d;
-
+$primary: #f9013f;
 $theme-colors: (
   "primary": $primary,
-  // "secondary": $secondary,
+  "secondary": $secondary,
   // "success": $success,
   // "info": $info,
   // "warning": $warning,
@@ -24,6 +24,11 @@ $theme-colors: (
   "light": $light,
   "dark": $dark,
 );
+$form-check-input-border-radius: 10rem;
+$input-btn-focus-box-shadow: 0 0 0 0.25rem rgb(129 52 175 / 25%);
+$form-check-input-focus-border: #8134af;
+$form-check-input-checked-border-color: #8134af;
+$form-check-input-checked-bg-color: #8134af;
 //main
 $slider-height: 42rem;
 $navHeight: 4rem;

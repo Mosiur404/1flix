@@ -1,11 +1,16 @@
+const { AuthenticationError } = require("apollo-server");
 const pool = require("../../util/database");
 
-const getMovies = async () => {
+const getMovies = async (_, __, context) => {
+  if (!context?.user) throw new AuthenticationError("You are not logged in");
+
   const [movies, fields] = await pool.query("SELECT * FROM movies LIMIT 4;");
   return movies;
 };
 
-const getMovie = async (parent, args) => {
+const getMovie = async (parent, args, context) => {
+  if (!context?.user) throw new AuthenticationError("You are not logged in");
+
   const { ID } = args;
   const Connection = await pool.getConnection();
   const [result, fields] = await Connection.query(

@@ -1,8 +1,10 @@
 import { createContext, useReducer } from "react";
+import { parseJwt } from "../lib/util/decoders";
 
 const initialState = {
   user: null,
 };
+
 const auth = {
   user: null,
   login: (payload) => {},
@@ -14,18 +16,40 @@ export const AuthContext = createContext(auth);
 const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      return { user: action.payload };
+      return helpSetupToken(state, action.payload.access_token);
     case "LOGOUT":
-      state.user = null;
-      break;
+      localStorage.removeItem("token");
+      return { ...state, user: null };
+    case "REGISTER":
+      return helpSetupToken(state, action.payload.access_token);
     default:
       return state;
   }
 };
 
+function helpSetupToken(state, token) {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("token", token);
+    const { username, isAdmin } = parseJwt(token);
+    return { ...state, user: { username, isAdmin } };
+  }
+}
+
 export const AuthProvider = ({ children }) => {
+  if (typeof window !== "undefined" && localStorage.getItem("token")) {
+    const decodedToken = parseJwt(localStorage.getItem("token"));
+    if (decodedToken.exp * 1000 < Date.now()) localStorage.removeItem("token");
+    else
+      initialState.user = {
+        username: decodedToken.username,
+        isAdmin: decodedToken.isAdmin,
+      };
+  }
   const [state, dispatch] = useReducer(authReducer, initialState);
 
+  const register = (userData) => {
+    dispatch({ type: "REGISTER", payload: userData });
+  };
   const login = (userData) => {
     dispatch({ type: "LOGIN", payload: userData });
   };
@@ -34,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: "LOGOUT" });
   };
 
-  const contextValue = { state, login, logout };
+  const contextValue = { user: state.user, login, logout, register };
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

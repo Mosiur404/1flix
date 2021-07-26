@@ -1,0 +1,25 @@
+@import "../../../styles/variables/custom-var.scss";
+
+.uploadedFiles {
+  background-color: white;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 1rem;
+  padding: 0.875rem;
+
+  & .fileTitle {
+    margin: 5px;
+  }
+  &:hover .fileTitle {
+    color: $secondary;
+  }
+  & .progressBar {
+    width: 100%;
+    height: 4px;
+    background: $secondary;
+    border-radius: 1rem;
+  }
+}

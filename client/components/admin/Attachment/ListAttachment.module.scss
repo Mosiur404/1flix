@@ -1,0 +1,44 @@
+@import "../../../styles/variables/custom-var.scss";
+.attachmentWrap {
+  padding: 3rem;
+  background-color: white;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  & h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  & img {
+    border-radius: 0.5rem;
+  }
+  & .attachment {
+    position: relative;
+    padding: 74% 0;
+    & .attachmentAction {
+      position: absolute;
+      bottom: 0.2rem;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.5s ease, transform 0.3s ease;
+    }
+    &:hover .attachmentAction,
+    &:focus .attachmentAction {
+      width: 100%;
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    & a {
+      color: $dark;
+      background-color: $light;
+      padding: 2px 10px;
+      border-radius: 1rem;
+      text-align: center;
+      text-decoration: none;
+      margin: 0.2rem;
+      cursor: pointer;
+    }
+  }
+}

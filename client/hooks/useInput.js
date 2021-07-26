@@ -20,7 +20,8 @@ export default function useInput(validator) {
   };
 
   return {
-    value: enteredValue,
+    value: enteredValue.trim(),
+    setValue: setEnteredValue,
     isValid,
     hasError,
     inputChangeHandler,

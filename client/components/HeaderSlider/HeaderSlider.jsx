@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import Button from "../UI/Button/Button";
 import "swiper/swiper-bundle.css";
-
 SwiperCore.use([Navigation, Pagination]);
 
 export default function HeaderSlider() {
@@ -19,7 +18,7 @@ export default function HeaderSlider() {
       <Swiper
         id="main"
         className="headerSwiper"
-        tag="section"
+        tag="div"
         wrapperTag="div"
         navigation={{
           prevEl: "#prevSlide",
@@ -55,6 +54,7 @@ export default function HeaderSlider() {
                       src="/assets/icons/Video.svg"
                       width="16"
                       height="16"
+                      priority
                     />
                   </Button>
                 </div>

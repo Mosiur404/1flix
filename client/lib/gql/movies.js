@@ -6,7 +6,8 @@ export const movieQuery = gql`
       ID
       movie_title
       attachment {
-        medium
+        attachment_title
+        attachment_slug
         file_extension
       }
     }
@@ -22,7 +23,8 @@ export const singleMovieQuery = gql`
       movie_length
       release_year
       attachment {
-        medium
+        attachment_title
+        attachment_slug
         file_extension
       }
     }

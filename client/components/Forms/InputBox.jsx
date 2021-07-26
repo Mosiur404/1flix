@@ -11,6 +11,7 @@ export function InputBox({
   onBlur = () => {},
   label = "",
   help = "",
+  params = {},
 }) {
   return (
     <div className="form-floating mb-3">
@@ -22,6 +23,7 @@ export function InputBox({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        {...params}
       />
       <label htmlFor={id}>{label}</label>
       <div id={id} className="form-text" aria-describedby={help}>

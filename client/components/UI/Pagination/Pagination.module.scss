@@ -1,0 +1,20 @@
+@import "../../../styles/variables/custom-var.scss";
+.pagination {
+  display: flex;
+  & .paginationItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 10rem;
+    background: $primary;
+    color: $light;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+    & + .paginationItem {
+      margin-left: 0.5rem;
+    }
+  }
+}

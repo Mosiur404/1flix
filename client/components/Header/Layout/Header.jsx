@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import Navigation from "../navigation/Navigation";
-import SearchBar from "../SearchBar/SearchBar";
+import Link from "next/link";
+import Navigation from "../Navigation/Navigation";
+import NavLink from "../../UI/NavLink/NavLink";
 import Toggler from "../Toggler/Toggler";
 import style from "./Header.module.scss";
+import { AuthContext } from "../../../store/auth";
 export default function Header({ metaTitle = "", metaDescription = "" }) {
-  const route = useRouter();
-  const homeLinkHandler = () => {
-    route.push("/");
-  };
+  const authCtx = useContext(AuthContext);
 
+  const username = authCtx?.user?.username || "_";
   return (
     <>
       <Head>
@@ -18,18 +17,19 @@ export default function Header({ metaTitle = "", metaDescription = "" }) {
         <meta name="description" content={metaDescription} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="container">
-        <nav className={style.navbar}>
+      <header suppressHydrationWarning={true} className="container">
+        <div className={style.navbar}>
           <Toggler />
-          <a
-            className={`${style.navbarBrand} primary-text`}
-            onClick={homeLinkHandler}
-          >
-            1FLIX
-          </a>
-          <Navigation onHomeLink={homeLinkHandler} />
-          <SearchBar />
-        </nav>
+          <Link href="/">
+            <a className={`${style.navbarBrand} primary-text`}>1FLIX</a>
+          </Link>
+          <Navigation />
+          <NavLink href="/me">
+            <a className={style.userName} suppressHydrationWarning={true}>
+              {username[0]}
+            </a>
+          </NavLink>
+        </div>
       </header>
     </>
   );

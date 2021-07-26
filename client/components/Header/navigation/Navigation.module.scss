@@ -11,21 +11,65 @@
   align-items: center;
   list-style: none;
   margin: 0;
+
   & .navLink {
-    display: block;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: black;
     line-height: $navHeight;
+    height: $navHeight;
     padding: 0 0.5rem;
     letter-spacing: 0.061rem;
     text-decoration: none;
     transition: color 0.15s ease-in-out;
+    user-select: none;
     cursor: pointer;
     & + .navLink {
       margin-left: 1rem;
     }
-    &:hover,
+    & .userName {
+      height: 1.8rem;
+      width: 1.8rem;
+      text-align: center;
+      text-decoration: none;
+      line-height: 1.8rem;
+      letter-spacing: 0;
+      color: $light;
+      background: $gradient;
+      border-radius: 1rem;
+    }
+    &:hover:not(.notGrad),
     &:focus {
-      color: #0a58ca;
+      background: $gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    & .dropdown {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 0;
+      background-color: $light;
+      z-index: 10;
+      display: none;
+      & .navLink {
+        padding: 0 2.5rem;
+        height: 2.8rem;
+        line-height: 2.8rem;
+        border-top: 1px solid #ccc;
+        + .navLink {
+          margin-left: 0;
+        }
+      }
+    }
+    &:hover .dropdown {
+      display: flex;
     }
   }
 }

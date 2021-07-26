@@ -1,12 +1,14 @@
 const typeDef = `
-type Attachment {
+  type Attachment {
     ID: ID!
     attachment_title: String!
-    thumbnail: String
-    medium: String
-    large: String
-    full: String
+    attachment_slug: String!
+    size: String!
     file_extension: String!
-}
+  }
+  type Attachments {
+    items: [Attachment]
+    total: Int!
+  }
 `;
 module.exports = typeDef;

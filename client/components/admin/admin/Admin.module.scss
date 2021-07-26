@@ -1,0 +1,21 @@
+@import "../../../styles/variables/custom-var.scss";
+.adminSectionWrap {
+  background: linear-gradient(135deg, #f9013f2c 0%, #8234af38 100%);
+}
+
+.dragContainer {
+  border: 2px dashed rgb(88, 88, 88);
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  border-radius: 1rem;
+  background-color: white;
+  border-color: $secondary;
+  transition: background-color 0.2s ease-out;
+  &.active {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+}

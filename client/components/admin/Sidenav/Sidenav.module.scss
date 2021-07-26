@@ -1,0 +1,31 @@
+@import "../../../styles/variables/custom-var.scss";
+.sideNav {
+  width: 100%;
+  & .sideNavLink {
+    display: flex;
+    padding: 0.8rem 1.5rem;
+    letter-spacing: 0.0375rem;
+    background-color: $light;
+    text-decoration: none;
+    color: $dark;
+    transition: color 0.2s ease, background-color 0.2s ease-in;
+
+    &:hover,
+    &:focus,
+    &.active {
+      color: $light;
+      background-color: $primary;
+    }
+    & + .sideNavLink {
+      border-top: 1px solid rgb(190, 190, 190);
+    }
+  }
+  & .sideNavLink:first-child {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  & .sideNavLink:last-child {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+}

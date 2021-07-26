@@ -8,9 +8,7 @@ export default function SingleMovie({ movie }) {
       <div
         className={`${style.singleMovieWrap}`}
         style={{
-          backgroundImage: `url("${`/assets/images/${
-            movie.attachment.medium + "." + movie.attachment.file_extension
-          }`}")`,
+          backgroundImage: `url("${`/assets/images/${movie.attachment.attachment_slug}`}")`,
         }}
       >
         <Banner movie={movie} />

@@ -3,7 +3,7 @@ const typeDef = `
     ID: ID!
     email: String!
     password: String!
-    display_name: String
+    username: String!
     role: Int!
     google_enabled: Int
     created_at: Date
