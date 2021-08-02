@@ -4,14 +4,13 @@
 }
 
 .dragContainer {
-  position: relative;
+  border: 2px dashed rgb(88, 88, 88);
+  padding: 2rem;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2rem;
-  margin-bottom: 3rem;
-  border: 2px dashed rgb(88, 88, 88);
   cursor: pointer;
   border-radius: 1rem;
   background-color: white;

@@ -1,11 +1,12 @@
 import { gql } from "@apollo/client";
 
 export const movieQuery = gql`
-  query {
+  query getMovies {
     movies {
       ID
       movie_title
       attachment {
+        ID
         attachment_title
         attachment_slug
         file_extension
@@ -15,7 +16,7 @@ export const movieQuery = gql`
 `;
 
 export const singleMovieQuery = gql`
-  query Movie($ID: ID!) {
+  query getMovie($ID: ID!) {
     movie(ID: $ID) {
       ID
       movie_title

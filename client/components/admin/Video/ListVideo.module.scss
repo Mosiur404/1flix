@@ -1,0 +1,32 @@
+@import "../../../styles/variables/custom-var.scss";
+.videoWrap {
+  padding: 3rem;
+  background-color: white;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  & h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  & img {
+    border-radius: 0.5rem;
+  }
+  & .video {
+    position: relative;
+    & .videoAction {
+      margin-top: 0.5rem;
+    }
+
+    & button {
+      color: $dark;
+      background-color: $light;
+      padding: 2px 10px;
+      border-radius: 1rem;
+      text-align: center;
+      text-decoration: none;
+      margin: 0.2rem;
+      cursor: pointer;
+    }
+  }
+}

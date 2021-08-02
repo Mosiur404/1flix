@@ -4,6 +4,11 @@
   background-color: white;
   border-radius: 1rem;
   margin-bottom: 1rem;
+  position: relative;
+  .spinnerContainer {
+    position: relative;
+    min-height: 3rem;
+  }
   & h1 {
     font-size: 20px;
     font-weight: bold;

@@ -1,23 +1,37 @@
-const context = require("./context/context");
-
-const Movie = require("./typeDefs/query/movie");
-const Attachment = require("./typeDefs/query/attachment");
-const User = require("./typeDefs/mutations/user");
+const { GraphQLUpload } = require("graphql-upload");
+const context = require("./context");
+const typeDefs = require("./typeDefs");
 
 const { getMovies, getMovie } = require("./resolvers/movie");
 const {
   getAttachment,
   getAttachments,
-  createAttachment,
+  getAttachmentCount,
+  uploadAttachment,
+  editAttachment,
+  deleteAttachment,
 } = require("./resolvers/attachment");
+const {
+  getVideo,
+  getVideos,
+  getVideoCount,
+  uploadVideo,
+  editVideo,
+  deleteVideo,
+} = require("./resolvers/video");
 const { createUser, login } = require("./resolvers/user");
 
 const resolvers = {
+  Upload: GraphQLUpload,
   Query: {
     movies: getMovies,
     movie: getMovie,
     attachment: getAttachment,
-    attachments: getAttachments,
+    getAttachments: getAttachments,
+    getAttachmentCount: getAttachmentCount,
+    video: getVideo,
+    getVideos: getVideos,
+    getVideoCount: getVideoCount,
   },
   Movie: {
     attachment: getAttachment,
@@ -25,40 +39,18 @@ const resolvers = {
   Mutation: {
     createUser: createUser,
     login: login,
-    createAttachment,
+    uploadAttachment,
+    editAttachment,
+    deleteAttachment,
+    uploadVideo,
+    deleteVideo,
+    editVideo,
   },
 };
 
-const Query = `
-  scalar Date
-  type Query {
-    movies: [Movie]
-    movie(ID: ID!): Movie
-    attachment(ID:ID!): Attachment
-    attachments(offset: Int!,limit: Int!): Attachments
-  }
-`;
-
-const Mutation = `
-  type Login {
-    access_token: String!
-    refresh_token: String!
-  }
-  type Mutation {
-    createUser(username:String!,email: String!, password: String!): Login
-    login(email: String!, password: String!): Login
-
-    createAttachment(
-      attachment_title: String!
-      attachment_slug: String!
-      size: Int!
-      file_extension: String!
-    ): Attachment
-  }
-`;
-
 module.exports = {
-  typeDefs: [Query, Mutation, Movie, Attachment, User],
+  typeDefs,
   resolvers,
+  introspection: true,
   context: context,
 };

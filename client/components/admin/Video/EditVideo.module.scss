@@ -1,0 +1,19 @@
+.videoWrap {
+  padding: 3rem;
+  background-color: white;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  & h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  & .editButton {
+    background-color: #e6e8f8;
+  }
+  & .editVideoForm {
+    padding: 0;
+  }
+  & .editVideo {
+  }
+}

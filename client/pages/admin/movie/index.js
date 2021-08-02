@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 export default function index() {
   const router = useRouter();
   if (typeof window !== "undefined") {
-    router.push("attachment/1");
+    router.push("movie/1");
   }
   return null;
 }

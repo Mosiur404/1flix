@@ -1,42 +1,41 @@
-import React, { useCallback, useState } from "react";
+import React, { useState, useCallback } from "react";
 import Header from "../../Header/Layout/Header";
 import Footer from "../../Footer/Footer";
 import Sidenav from "../Sidenav/Sidenav";
 import Image from "next/image";
-import style from "./Attachment.module.scss";
-import UploadFile from "./UploadFile";
-import ListAttachment from "./ListAttachment";
-import Pagination from "../../UI/Pagination/Pagination";
 import { useDropzone } from "react-dropzone";
-import EditAttachment from "./EditAttachment";
+import UploadFile from "./UploadFile";
+import ListVideo from "./ListVideo";
+import style from "./Video.module.scss";
+import EditVideo from "./EditVideo";
 
-export default function Attachment({ currentPage }) {
+export default function Video() {
+  const [editVideoVisibility, seteditVideoVisibility] = useState(false);
   const [uploaderVisibility, setUploaderVisibility] = useState(false);
   const [totalItems, setTotalItems] = useState(0);
 
-  const [attachments, setAttachments] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   const onDrop = useCallback((acceptedFiles, rejectedFiles = []) => {
     const mappedAcc = acceptedFiles.map((file) => ({ file, errors: [] }));
-    setAttachments((curr) => [...curr, ...mappedAcc, ...rejectedFiles]);
+    setVideos((curr) => [...curr, ...mappedAcc, ...rejectedFiles]);
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: "image/jpeg, image/png, image/jpg",
+    accept: "video/mp4,video/x-m4v,video/*",
   });
 
-  //edit attachment section
-  const [editAttachment, seteditAttachment] = useState({
+  const [editVideo, seteditVideo] = useState({
     ID: null,
-    attachment_slug: null,
-    attachment_title: null,
-    file_extension: null,
+    parent_ID: null,
+    video_slug: null,
+    video_title: null,
     size: null,
+    file_extension: null,
     buildUrl: null,
   });
-  const [editAttachmentVisibility, seteditAttachmentVisibility] =
-    useState(false);
+
   return (
     <>
       <Header metaTitle="IFLIX" metaDescription="1FLIX STREAMING" />
@@ -47,10 +46,10 @@ export default function Attachment({ currentPage }) {
               <Sidenav />
             </div>
             <div className="col-lg-9">
-              {editAttachmentVisibility && (
-                <EditAttachment
-                  data={editAttachment}
-                  setVisiblity={seteditAttachmentVisibility}
+              {editVideoVisibility && (
+                <EditVideo
+                  data={editVideo}
+                  setVisiblity={seteditVideoVisibility}
                 />
               )}
               {uploaderVisibility && (
@@ -77,22 +76,17 @@ export default function Attachment({ currentPage }) {
                     <span className="text-secondary">Browse </span>
                   </div>
 
-                  {attachments.map((wrap, index) => (
+                  {videos.map((wrap, index) => (
                     <UploadFile key={index} file={wrap.file} />
                   ))}
                 </>
               )}
-              <ListAttachment
+              <ListVideo
                 setUploaderVisibility={setUploaderVisibility}
                 setTotal={setTotalItems}
-                currentPage={currentPage}
-                seteditAttachment={seteditAttachment}
-                seteditAttachmentVisibility={seteditAttachmentVisibility}
-              />
-              <Pagination
-                totalItems={totalItems}
-                perPage={18}
-                currentPage={currentPage}
+                currentPage={1}
+                seteditVideo={seteditVideo}
+                seteditVideoVisibility={seteditVideoVisibility}
               />
             </div>
           </div>

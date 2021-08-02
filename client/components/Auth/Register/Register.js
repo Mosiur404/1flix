@@ -104,8 +104,8 @@ export default function Register() {
               {error && <AlertDanger>{errorData}</AlertDanger>}
               <InputBox
                 type="text"
-                className={usernameClass}
                 id="enteredUsername"
+                hasError={usernameHasError}
                 placeholder="username"
                 value={enteredUsername}
                 onChange={usernameChangeHandler}
@@ -115,8 +115,8 @@ export default function Register() {
               />
               <InputBox
                 type="email"
-                className={emailClass}
                 id="enteredEmail"
+                hasError={emailHasError}
                 placeholder="name@example.com"
                 value={enteredEmail}
                 onChange={emailChangeHandler}
@@ -125,8 +125,8 @@ export default function Register() {
               />
               <InputBox
                 type="password"
-                className={passwordClass}
                 id="enteredPassword"
+                hasError={passwordHasError}
                 placeholder="Password (at least 6 character)"
                 value={enteredPassword}
                 onChange={passwordChangeHandler}

@@ -1,9 +1,9 @@
+require("dotenv").config();
 const pool = require("../../util/database");
 const crypto = require("crypto");
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
-const { UserInputError } = require("apollo-server");
-const config = require("config");
+const { UserInputError } = require("apollo-server-express");
 
 const createUser = async (_, payload) => {
   const schema = Joi.object({
@@ -70,7 +70,6 @@ const login = async (_, payload) => {
   }
   const user = userExist.shift();
   // user exists so match password
-  console.log(payload);
   if (user.password !== hashPassword(payload.password))
     throw new UserInputError("Password not match", {
       validationErrors: [{ message: `User ${payload.email}, check password.` }],
@@ -86,7 +85,7 @@ const login = async (_, payload) => {
 
 //helpers
 function createToken(data) {
-  return jwt.sign(data, config.get("privateKey"), { expiresIn: "24h" });
+  return jwt.sign(data, process.env.privateKey, { expiresIn: "24h" });
 }
 function hashPassword(password) {
   return crypto.createHash("md5").update(password).digest("hex");

@@ -22,7 +22,7 @@ export function validEmailOrUsername(emailOrUsername) {
 
 export function validateName(name = "") {
   if (name === "") return false;
-  const re = /^.{2,20}$/;
+  const re = /^.{3,255}$/;
   return re.test(String(name));
 }
 export function validateFile(file = "") {

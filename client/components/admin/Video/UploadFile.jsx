@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./UploadFile.module.scss";
 import Image from "next/image";
 import { useMutation } from "@apollo/client";
-import {
-  attachmentMutation,
-  attachmentsQuery,
-} from "../../../lib/gql/attachments";
+import { uploadVideoMutation } from "../../../lib/gql/videos";
 import createApolloUploadClient from "../../../lib/apolloUploadClient";
 
 const uploadClient = createApolloUploadClient();
@@ -13,7 +10,7 @@ const uploadClient = createApolloUploadClient();
 export default function UploadFile({ file }) {
   const [success, setSuccess] = useState(null);
 
-  const [mutate, { loading, error }] = useMutation(attachmentMutation, {
+  const [mutate, { loading, error }] = useMutation(uploadVideoMutation, {
     client: uploadClient,
   });
 
@@ -21,11 +18,12 @@ export default function UploadFile({ file }) {
     const runUplaod = async () => {
       const { data } = await mutate({
         variables: { file: file },
-        refetchQueries: [{ query: attachmentsQuery }],
+        // refetchQueries: [{ query: attachmentsQuery }],
       });
-      if (!loading && data?.uploadAttachment) setSuccess(true);
+      if (!loading && data?.uploadVideo) setSuccess(true);
     };
     runUplaod();
+
     return () => {};
   }, []);
 
@@ -41,7 +39,7 @@ export default function UploadFile({ file }) {
           <Image src="/assets/icons/Image.svg" width="16" height="16" />
           <div className={style.fileTitle}>{file.name}</div>
         </span>
-        <span class="text-secondary">( {successMesage} )</span>
+        <span className="text-secondary">( {successMesage} )</span>
       </div>
     </div>
   );
